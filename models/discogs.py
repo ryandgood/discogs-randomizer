@@ -1,0 +1,72 @@
+from typing import List, Optional
+from pydantic import BaseModel, HttpUrl
+
+
+class Urls(BaseModel):
+    next: Optional[HttpUrl]
+    last: Optional[HttpUrl]
+
+
+class Pagination(BaseModel):
+    per_page: int
+    pages: int
+    page: int
+    items: int
+    urls: Urls
+
+
+class Format(BaseModel):
+    qty: str
+    descriptions: List[str]
+    name: str
+
+
+class Label(BaseModel):
+    resource_url: HttpUrl
+    entity_type: str
+    catno: str
+    id: int
+    name: str
+
+
+class Artist(BaseModel):
+    id: int
+    name: str
+    join: str
+    resource_url: HttpUrl
+    anv: str
+    tracks: str
+    role: str
+
+
+class BasicInformation(BaseModel):
+    id: int
+    title: str
+    year: int
+    resource_url: HttpUrl
+    thumb: HttpUrl
+    cover_image: HttpUrl
+    formats: List[Format]
+    labels: List[Label]
+    artists: List[Artist]
+    genres: List[str]
+    styles: List[str]
+
+
+class Note(BaseModel):
+    field_id: Optional[int]
+    value: Optional[str]
+
+
+class Release(BaseModel):
+    id: int
+    instance_id: int
+    folder_id: int
+    rating: int
+    basic_information: BasicInformation
+    notes: Optional[List[Note]]
+
+
+class CollectionResponse(BaseModel):
+    pagination: Pagination
+    releases: List[Release]
