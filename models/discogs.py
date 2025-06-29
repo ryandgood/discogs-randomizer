@@ -1,10 +1,10 @@
 from typing import List, Optional
-from pydantic import BaseModel, HttpUrl
+from pydantic import BaseModel
 
 
 class Urls(BaseModel):
-    next: Optional[HttpUrl]
-    last: Optional[HttpUrl]
+    next: Optional[str] = None
+    last: Optional[str] = None
 
 
 class Pagination(BaseModel):
@@ -22,7 +22,7 @@ class Format(BaseModel):
 
 
 class Label(BaseModel):
-    resource_url: HttpUrl
+    resource_url: str
     entity_type: str
     catno: str
     id: int
@@ -33,7 +33,7 @@ class Artist(BaseModel):
     id: int
     name: str
     join: str
-    resource_url: HttpUrl
+    resource_url: str
     anv: str
     tracks: str
     role: str
@@ -43,9 +43,9 @@ class BasicInformation(BaseModel):
     id: int
     title: str
     year: int
-    resource_url: HttpUrl
-    thumb: HttpUrl
-    cover_image: HttpUrl
+    resource_url: str
+    thumb: str
+    cover_image: str
     formats: List[Format]
     labels: List[Label]
     artists: List[Artist]
@@ -64,7 +64,7 @@ class Release(BaseModel):
     folder_id: int
     rating: int
     basic_information: BasicInformation
-    notes: Optional[List[Note]]
+    notes: List[Note] | None = None
 
 
 class CollectionResponse(BaseModel):
