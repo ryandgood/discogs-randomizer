@@ -11,3 +11,5 @@ wheels/
 
 # zed
 .zed/
+
+collection.json
