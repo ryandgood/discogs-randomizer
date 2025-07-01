@@ -1,11 +1,10 @@
 [project]
 name = "discogs-randomizer"
 version = "0.1.0"
-description = "Add your description here"
+description = "A toy project that pulls your Discogs collection and suggests a random album!"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "fastapi[standard]>=0.115.14",
     "httpx>=0.28.1",
-    "rich>=14.0.0",
 ]
