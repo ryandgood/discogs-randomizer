@@ -3,7 +3,7 @@ from pathlib import Path
 import httpx
 import json
 from ..models.discogs import CollectionResponse, Release
-from rich import pretty
+
 class DiscogsClient:
     BASE_URL = "https://api.discogs.com"
 

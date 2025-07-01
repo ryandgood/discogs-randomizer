@@ -3,6 +3,7 @@ from .lib.discogs import DiscogsClient
 from .lib.randomizer import AlbumRandomizer
 import os
 import uvicorn
+import re
 
 app = FastAPI()
 
@@ -18,8 +19,11 @@ async def get_album():
 
     album = randomizer.pick_random()
 
+    # create a list of artists, but strip out any digits in parenthesis which discogs adds for some reaso
+    artists = [re.sub(r'\s*\(\d+\)\s*', ' ', artist.name) for artist in album.basic_information.artists]
+
     return {
-        "artists": [artist.name for artist in album.basic_information.artists],
+        "artists": artists,
         "album": album.basic_information.title
     }
 

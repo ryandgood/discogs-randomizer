@@ -1,6 +1,5 @@
 import json
 import random
-from typing import Optional
 from pathlib import Path
 from ..models.discogs import Release  # reuse the Pydantic model
 
