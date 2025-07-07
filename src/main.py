@@ -8,8 +8,7 @@ import re
 app = FastAPI()
 
 discogs = DiscogsClient(token=os.getenv("DISCOGS_TOKEN",""), username=os.getenv("DISCOGS_USERNAME", ""))
-meh = discogs.sync()
-meh.close()
+discogs.sync().close()
 randomizer = AlbumRandomizer("./collection.json")
 
 @app.get("/album")
