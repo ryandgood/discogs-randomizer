@@ -92,7 +92,6 @@ class DiscogsClient:
 
         # Step 4: Compare counts
         if current_count == last_count:
-            print("Item count unchanged, skipping update.")
             return False
 
         print(f"Item count changed: {last_count} → {current_count}")
